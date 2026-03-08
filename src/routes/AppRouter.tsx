@@ -14,6 +14,9 @@ import EditEmployeePage from "../component/pages/employees/EditEmployeePage";
 import PositionsPage from "../component/pages/positions/PositionsPage";
 import CreatePositionsPage from "../component/pages/positions/CreatePositionsPage";
 import EditPositionsPage from "../component/pages/positions/EditPositionsPage";
+import DepartementPage from "../component/pages/departement/DepartementPage";
+import EditDepartementPage from "../component/pages/departement/EditDepartementPage";
+import CreateDepartementPage from "../component/pages/departement/CreateDepartementPage";
 export default function AppRouter() {
   return (
     <BrowserRouter>
@@ -48,6 +51,15 @@ export default function AppRouter() {
               <Route index element={<PositionsPage />} />
               <Route path="create" element={<CreatePositionsPage />} />
               <Route path="edit/:id" element={<EditPositionsPage />} />
+            </Route>
+          </Route>
+        </Route>
+        <Route element={<ProtectedRoute />}>
+          <Route path="/departements" element={<Layout />}>
+            <Route element={<PageWrapper />}>
+              <Route index element={<DepartementPage />} />
+              <Route path="create" element={<CreateDepartementPage />} />
+              <Route path="edit/:id" element={<EditDepartementPage />} />
             </Route>
           </Route>
         </Route>

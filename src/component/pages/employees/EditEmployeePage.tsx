@@ -11,8 +11,8 @@ export default function EditEmployeePage() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const userId = String(id);
-  const { data, isLoading } = useEmployee(userId);
+  const employeId = String(id);
+  const { data, isLoading } = useEmployee(employeId);
   const updateEmployee = useUpdateEmployee();
   if (isLoading) {
     return <EmployeeFormSkeleton />;
@@ -21,7 +21,7 @@ export default function EditEmployeePage() {
   const handleSubmit = (form: EmployeeFormValues) => {
     updateEmployee.mutate(
       {
-        id: userId,
+        id: employeId,
         data: form,
       },
       {

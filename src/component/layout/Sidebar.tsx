@@ -44,8 +44,8 @@ export default function Sidebar({
       roles: ["admin"],
     },
     {
-      name: "Manage Departments",
-      path: "/departments",
+      name: "Manage Departements",
+      path: "/departements",
       icon: Landmark,
       roles: ["admin"],
     },
