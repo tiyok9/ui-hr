@@ -2,11 +2,11 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import api from "../../services/axios";
 import toast from "react-hot-toast";
 
-export const useUsers = (page: number, perPage: number, search: string) => {
+export const usePositions = (page: number, perPage: number, search: string) => {
   return useQuery({
-    queryKey: ["users", page, perPage, search],
+    queryKey: ["positions", page, perPage, search],
     queryFn: async () => {
-      const res = await api.get("/user", {
+      const res = await api.get("/jabatan", {
         params: {
           page,
           per_page: perPage,
@@ -18,82 +18,80 @@ export const useUsers = (page: number, perPage: number, search: string) => {
     },
   });
 };
-export const useUser = (id: string) => {
+export const usePosition = (id: string) => {
   return useQuery({
-    queryKey: ["user", id],
+    queryKey: ["position", id],
     queryFn: async () => {
-      const res = await api.get(`/user/${id}`);
+      const res = await api.get(`/jabatan/${id}`);
       return res.data;
     },
     enabled: !!id,
   });
 };
-export const useCreateUser = () => {
+export const useCreatePosition = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async (data: any) => {
-      const res = await api.post("/user/store", data);
+      const res = await api.post("/jabatan/store", data);
       return res.data;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["users"],
+        queryKey: ["positions"],
       });
-      toast.success("User created successfully");
+      toast.success("Position created successfully");
     },
     onError: () => {
-      toast.error("Failed to create user");
+      toast.error("Failed to create position");
     },
   });
 };
-
-export const useEmployees = () => {
+export const useDepartements = () => {
   return useQuery({
-    queryKey: ["employees"],
+    queryKey: ["departements"],
     queryFn: async () => {
-      const res = await api.get("/karyawan");
+      const res = await api.get("/departemen");
       return res.data;
     },
   });
 };
-
-export const useDeleteUser = () => {
+export const useDeletePosition = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async (id: string) => {
-      const res = await api.delete(`/user/delete/${id}`);
+      const res = await api.delete(`/jabatan/delete/${id}`);
       return res.data;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["users"],
+        queryKey: ["positions"],
       });
-      toast.success("User deleted successfully");
+      toast.success("Position deleted successfully");
     },
     onError: () => {
-      toast.error("Failed to delete user");
+      toast.error("Failed to delete position");
     },
   });
 };
-export const useUpdateUser = () => {
+export const useUpdatePosition = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async ({ id, data }: { id: string; data: any }) => {
-      const res = await api.patch(`/user/update/${id}`, data);
+      const res = await api.patch(`/jabatan/update/${id}`, data);
       return res.data;
     },
 
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["users"],
+        queryKey: ["positions"],
       });
-      toast.success("User updated successfully");
+      toast.success("Position updated successfully");
     },
     onError: () => {
-      toast.error("Failed to update user");
+      toast.error("Failed to update position");
     },
   });
 };

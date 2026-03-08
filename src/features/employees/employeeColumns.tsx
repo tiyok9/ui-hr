@@ -1,20 +1,22 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import TableActions from "../../component/table/TableActions";
 
-export interface User {
-  id: number;
-  username: string;
-  name: string;
+export interface Employee {
+  id: string;
+  nama: string;
+  nik: string;
+  no_hp: string;
+  jabatan: string;
 }
 
-interface DeleteUserMutation {
-  mutate: (id: number) => void;
+interface DeleteEmployeeMutation {
+  mutate: (id: string) => void;
 }
 
 export const employeeColumns = (
   navigate: (path: string) => void,
-  deleteUser: DeleteUserMutation,
-): ColumnDef<User>[] => [
+  deleteEmployee: DeleteEmployeeMutation,
+): ColumnDef<Employee>[] => [
   {
     header: "Nama",
     accessorKey: "nama",
@@ -39,7 +41,7 @@ export const employeeColumns = (
       return (
         <TableActions
           onEdit={() => navigate(`/employees/edit/${user.id}`)}
-          onDelete={() => deleteUser.mutate(user.id)}
+          onDelete={() => deleteEmployee.mutate(user.id)}
         />
       );
     },

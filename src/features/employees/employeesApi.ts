@@ -53,7 +53,7 @@ export const useDeleteEmployee = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (id: number) => {
+    mutationFn: async (id: string) => {
       const res = await api.delete(`/karyawan/delete/${id}`);
       return res.data;
     },

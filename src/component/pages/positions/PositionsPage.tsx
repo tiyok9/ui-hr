@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import DataTable from "../../table/DataTable";
+import TableToolbar from "../../table/TableToolbar";
+import TableSkeleton from "../../table/TableSkeleton";
 import { useNavigate } from "react-router-dom";
 import useDebounce from "../../../hooks/useDebounce";
 import {
-  useDeleteEmployee,
-  useEmployees,
-} from "../../../features/employees/employeesApi";
-import TableSkeleton from "../../table/TableSkeleton";
-import { employeeColumns } from "../../../features/employees/employeeColumns";
-import DataTable from "../../table/DataTable";
-import TableToolbar from "../../table/TableToolbar";
+  useDeletePosition,
+  usePositions,
+} from "../../../features/positions/positionsApi";
+import { positionsColumns } from "../../../features/positions/PositionColumns";
 
-const EmployeesPage = () => {
+const PositionsPage = () => {
   const navigate = useNavigate();
 
   const [pageIndex, setPageIndex] = useState(0);
@@ -18,20 +18,20 @@ const EmployeesPage = () => {
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 500);
 
-  const { data, isLoading } = useEmployees(
+  const { data, isLoading } = usePositions(
     pageIndex + 1,
     pageSize,
     debouncedSearch,
   );
-  const deleteEmployee = useDeleteEmployee();
+  const deletePosition = useDeletePosition();
 
   if (isLoading) return <TableSkeleton />;
 
-  const columns = employeeColumns(navigate, deleteEmployee);
+  const columns = positionsColumns(navigate, deletePosition);
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-semibold">Manage Employees</h1>
+      <h1 className="text-xl font-semibold">Manage Positions</h1>
 
       <DataTable
         columns={columns}
@@ -46,7 +46,7 @@ const EmployeesPage = () => {
               setSearch(val);
               setPageIndex(0);
             }}
-            onAdd={() => navigate("/employees/create")}
+            onAdd={() => navigate("/positions/create")}
           />
         }
         onPaginationChange={(page, size) => {
@@ -58,4 +58,4 @@ const EmployeesPage = () => {
   );
 };
 
-export default EmployeesPage;
+export default PositionsPage;

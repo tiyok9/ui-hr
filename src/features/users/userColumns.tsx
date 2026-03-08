@@ -2,13 +2,13 @@ import type { ColumnDef } from "@tanstack/react-table";
 import TableActions from "../../component/table/TableActions";
 
 export interface User {
-  id: number;
+  id: string;
   username: string;
   name: string;
 }
 
 interface DeleteUserMutation {
-  mutate: (id: number) => void;
+  mutate: (id: string) => void;
 }
 
 export const userColumns = (
