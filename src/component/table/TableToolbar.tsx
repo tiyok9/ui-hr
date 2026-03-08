@@ -17,7 +17,7 @@ export default function TableToolbar({ search, onSearchChange, onAdd }: Props) {
           />
 
           <input
-            placeholder="Search users..."
+            placeholder="Search"
             value={search}
             onChange={(e) => onSearchChange(e.target.value)}
             className="pl-9 pr-3 py-2 border rounded-md text-sm w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
