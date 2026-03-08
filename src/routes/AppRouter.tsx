@@ -20,6 +20,9 @@ import CreateDepartementPage from "../component/pages/departement/CreateDepartem
 import TypeLeavePage from "../component/pages/typeLeave/TypeLeavePage";
 import CreateTypeLeavePage from "../component/pages/typeLeave/CreateTypeLeavePage";
 import EditTypeLeavePage from "../component/pages/typeLeave/EditTypeLeavePage";
+import ManageLeavePage from "../component/pages/manageLeave/ManageLeavePage";
+import CreateManageLeavePage from "../component/pages/manageLeave/CreateManageLeavePage";
+import EditManageLeavePage from "../component/pages/manageLeave/EditManageLeavePage";
 export default function AppRouter() {
   return (
     <BrowserRouter>
@@ -72,6 +75,15 @@ export default function AppRouter() {
               <Route index element={<TypeLeavePage />} />
               <Route path="create" element={<CreateTypeLeavePage />} />
               <Route path="edit/:id" element={<EditTypeLeavePage />} />
+            </Route>
+          </Route>
+        </Route>
+        <Route element={<ProtectedRoute />}>
+          <Route path="/manage-leaves" element={<Layout />}>
+            <Route element={<PageWrapper />}>
+              <Route index element={<ManageLeavePage />} />
+              <Route path="create" element={<CreateManageLeavePage />} />
+              <Route path="edit/:id" element={<EditManageLeavePage />} />
             </Route>
           </Route>
         </Route>

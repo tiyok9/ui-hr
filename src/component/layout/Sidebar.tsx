@@ -58,7 +58,7 @@ export default function Sidebar({
     },
     {
       name: "Manage Leave",
-      path: "/leave",
+      path: "/manage-leaves",
       icon: BookOpenCheck,
       roles: ["admin"],
     },

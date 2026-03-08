@@ -3,8 +3,7 @@ import TableActions from "../../component/table/TableActions";
 
 export interface TypeLeave {
   id: string;
-  nama_jabatan: string;
-  departemen: string;
+  jenis_cuti: string;
 }
 
 interface DeleteTypeLeavesMutation {
