@@ -17,6 +17,9 @@ import EditPositionsPage from "../component/pages/positions/EditPositionsPage";
 import DepartementPage from "../component/pages/departement/DepartementPage";
 import EditDepartementPage from "../component/pages/departement/EditDepartementPage";
 import CreateDepartementPage from "../component/pages/departement/CreateDepartementPage";
+import TypeLeavePage from "../component/pages/typeLeave/TypeLeavePage";
+import CreateTypeLeavePage from "../component/pages/typeLeave/CreateTypeLeavePage";
+import EditTypeLeavePage from "../component/pages/typeLeave/EditTypeLeavePage";
 export default function AppRouter() {
   return (
     <BrowserRouter>
@@ -60,6 +63,15 @@ export default function AppRouter() {
               <Route index element={<DepartementPage />} />
               <Route path="create" element={<CreateDepartementPage />} />
               <Route path="edit/:id" element={<EditDepartementPage />} />
+            </Route>
+          </Route>
+        </Route>
+        <Route element={<ProtectedRoute />}>
+          <Route path="/type-leaves" element={<Layout />}>
+            <Route element={<PageWrapper />}>
+              <Route index element={<TypeLeavePage />} />
+              <Route path="create" element={<CreateTypeLeavePage />} />
+              <Route path="edit/:id" element={<EditTypeLeavePage />} />
             </Route>
           </Route>
         </Route>

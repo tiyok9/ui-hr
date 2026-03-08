@@ -6,6 +6,7 @@ import {
   BookOpenCheck,
   Landmark,
   Sparkles,
+  FileTypeCorner,
 } from "lucide-react";
 import { useAuth } from "../../hooks/useAuth";
 
@@ -47,6 +48,12 @@ export default function Sidebar({
       name: "Manage Departements",
       path: "/departements",
       icon: Landmark,
+      roles: ["admin"],
+    },
+    {
+      name: "Types of leave",
+      path: "/type-leaves",
+      icon: FileTypeCorner,
       roles: ["admin"],
     },
     {
