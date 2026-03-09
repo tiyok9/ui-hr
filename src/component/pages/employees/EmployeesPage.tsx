@@ -4,6 +4,7 @@ import useDebounce from "../../../hooks/useDebounce";
 import {
   useDeleteEmployee,
   useEmployees,
+  useUpdateStatusEmployee,
 } from "../../../features/employees/employeesApi";
 import TableSkeleton from "../../table/TableSkeleton";
 import { employeeColumns } from "../../../features/employees/employeeColumns";
@@ -24,10 +25,15 @@ const EmployeesPage = () => {
     debouncedSearch,
   );
   const deleteEmployee = useDeleteEmployee();
+  const updateEmployeeStatus = useUpdateStatusEmployee();
 
   if (isLoading) return <TableSkeleton />;
 
-  const columns = employeeColumns(navigate, deleteEmployee);
+  const columns = employeeColumns(
+    navigate,
+    deleteEmployee,
+    updateEmployeeStatus,
+  );
 
   return (
     <div className="space-y-6">

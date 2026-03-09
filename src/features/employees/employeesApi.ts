@@ -89,6 +89,27 @@ export const useUpdateEmployee = () => {
   });
 };
 
+export const useUpdateStatusEmployee = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({ id }: { id: string }) => {
+      const res = await api.patch(`/karyawan/update/status/${id}`);
+      return res.data;
+    },
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["employees"],
+      });
+      toast.success("Employee status updated successfully");
+    },
+    onError: () => {
+      toast.error("Failed to update employee status");
+    },
+  });
+};
+
 export const usePosition = () => {
   return useQuery({
     queryKey: ["positions"],

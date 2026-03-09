@@ -7,6 +7,7 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from "recharts";
+import HeaderSummary from "../../../features/dashboard/components/HeaderSummary";
 
 const attendanceData = [
   { month: "Jan", hadir: 90, cuti: 5 },
@@ -18,25 +19,8 @@ const attendanceData = [
 export default function DashboardPage() {
   return (
     <div className="space-y-6">
-      {/* CARD SUMMARY */}
-      <div className="grid md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-xl shadow">
-          <p className="text-gray-500">Total Karyawan</p>
-          <h2 className="text-3xl font-bold">120</h2>
-        </div>
+      <HeaderSummary />
 
-        <div className="bg-white p-6 rounded-xl shadow">
-          <p className="text-gray-500">Karyawan Aktif</p>
-          <h2 className="text-3xl font-bold text-green-600">110</h2>
-        </div>
-
-        <div className="bg-white p-6 rounded-xl shadow">
-          <p className="text-gray-500">Izin / Cuti Bulan Ini</p>
-          <h2 className="text-3xl font-bold text-orange-500">12</h2>
-        </div>
-      </div>
-
-      {/* CHART */}
       <div className="bg-white p-6 rounded-xl shadow">
         <h2 className="font-bold mb-4">Rekap Absensi Bulanan</h2>
 
