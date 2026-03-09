@@ -3,7 +3,7 @@ import EmployeeFormSkeleton from "../../../features/employees/components/Employe
 import {
   useTypeLeave,
   useUpdateTypeLeave,
-} from "../../../features/typeLeave/typeleaveApi";
+} from "../../../features/typeLeave/TypeLeaveApi";
 import type { TypeLeaveFormValues } from "../../../features/typeLeave/components/TypeLeaveForm";
 import TypeLeaveForm from "../../../features/typeLeave/components/TypeLeaveForm";
 

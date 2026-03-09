@@ -7,6 +7,7 @@ import TableToolbar from "../../table/TableToolbar";
 import {
   useDeleteManageLeave,
   useManageLeaves,
+  useUpdateManageLeave,
 } from "../../../features/manageLeave/typeManageLeaveApi";
 import { manageLeavesColumns } from "../../../features/manageLeave/ManageLeaveColumns";
 
@@ -23,11 +24,10 @@ const ManageLeavePage = () => {
     pageSize,
     debouncedSearch,
   );
-  const deleteManageLeave = useDeleteManageLeave();
+  const updateManageLeave = useUpdateManageLeave();
 
   if (isLoading) return <TableSkeleton />;
-
-  const columns = manageLeavesColumns(navigate, deleteManageLeave);
+  const columns = manageLeavesColumns(navigate, updateManageLeave);
 
   return (
     <div className="space-y-6">
@@ -46,7 +46,6 @@ const ManageLeavePage = () => {
               setSearch(val);
               setPageIndex(0);
             }}
-            onAdd={() => navigate("/manage-leaves/create")}
           />
         }
         onPaginationChange={(page, size) => {

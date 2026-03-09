@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import TypeLeaveForm, {
   type TypeLeaveFormValues,
 } from "../../../features/typeLeave/components/TypeLeaveForm";
-import { useCreateTypeLeave } from "../../../features/typeLeave/typeleaveApi";
+import { useCreateTypeLeave } from "../../../features/typeLeave/TypeLeaveApi";
 
 const CreateTypeLeavePage = () => {
   const navigate = useNavigate();

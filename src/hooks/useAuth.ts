@@ -22,7 +22,7 @@ export function useAuth() {
     dispatch(loginSuccess(data));
     localStorage.setItem("token", data.token);
     localStorage.setItem("refreshToken", data.refreshToken);
-
+    localStorage.setItem("role", data.role);
     navigate("/");
   };
 
@@ -31,8 +31,9 @@ export function useAuth() {
 
     localStorage.removeItem("token");
     localStorage.removeItem("refreshToken");
+    localStorage.removeItem("role");
 
-    navigate("/login");
+    window.location.href = "/login";
   };
 
   const hasRole = (roles: string[]) => {

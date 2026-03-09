@@ -90,3 +90,13 @@ export const useUpdateTypeLeave = () => {
     },
   });
 };
+
+export const useTypeLeaveNoPage = () => {
+  return useQuery({
+    queryKey: ["type-leaves"],
+    queryFn: async () => {
+      const res = await api.get("/jenis-cuti");
+      return res.data;
+    },
+  });
+};

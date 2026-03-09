@@ -7,6 +7,7 @@ import {
   Landmark,
   Sparkles,
   FileTypeCorner,
+  NotebookPen,
 } from "lucide-react";
 import { useAuth } from "../../hooks/useAuth";
 
@@ -107,17 +108,17 @@ export default function Sidebar({
                   to={menu.path}
                   onClick={() => setMobileOpen(false)}
                   className={`
-    flex items-center gap-3
-    mx-2 px-4 py-3 rounded-xl
+                  flex items-center gap-3
+                  mx-2 px-4 py-3 rounded-xl
 
-    transition-all duration-200
+                  transition-all duration-200
 
-    ${
-      active
-        ? "bg-purple-600 text-white shadow-sm"
-        : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-    }
-    `}
+                  ${
+                    active
+                      ? "bg-purple-600 text-white shadow-sm"
+                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                  }
+                  `}
                 >
                   <menu.icon size={20} />
 

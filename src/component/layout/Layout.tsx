@@ -8,7 +8,7 @@ export default function Layout() {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div className="flex min-h-screen bg-gray-100 dark:bg-gray-950">
+    <div className="flex min-h-screen dark:bg-gray-950">
       <Sidebar
         mobileOpen={mobileOpen}
         setMobileOpen={setMobileOpen}
@@ -25,7 +25,7 @@ export default function Layout() {
           setCollapsed={setCollapsed}
         />
 
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-6 bg-[rgb(248,248,248)] dark:bg-gray-900">
           <Outlet />
         </main>
       </div>

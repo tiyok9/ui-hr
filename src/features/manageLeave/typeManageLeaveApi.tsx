@@ -42,7 +42,7 @@ export const useCreateManageLeave = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["manage-leaves"],
+        queryKey: ["manage-leave"],
       });
       toast.success("Manage leave created successfully");
     },
@@ -61,7 +61,7 @@ export const useDeleteManageLeave = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["manage-leaves"],
+        queryKey: ["manage-leave"],
       });
       toast.success("Manage leave deleted successfully");
     },
@@ -75,13 +75,13 @@ export const useUpdateManageLeave = () => {
 
   return useMutation({
     mutationFn: async ({ id, data }: { id: string; data: any }) => {
-      const res = await api.patch(`/cuti/update/${id}`, data);
+      const res = await api.patch(`/cuti/update-status/${id}`, data);
       return res.data;
     },
 
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["manage-leaves"],
+        queryKey: ["manage-leave"],
       });
       toast.success("Manage leave updated successfully");
     },

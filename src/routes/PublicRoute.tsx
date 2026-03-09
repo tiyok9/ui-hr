@@ -3,7 +3,9 @@ import { Navigate, Outlet } from "react-router-dom";
 export default function PublicRoute() {
   const token = localStorage.getItem("token");
 
-  if (token && token !== "undefined" && token !== "null") {
+  const isAuthenticated = token && token !== "undefined" && token !== "null";
+
+  if (isAuthenticated) {
     return <Navigate to="/" replace />;
   }
 

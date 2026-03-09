@@ -58,8 +58,7 @@ export default function DataTable<T>({
   });
 
   return (
-    <div className="bg-white border rounded-lg shadow-sm">
-      {/* TABLE */}
+    <div className="bg-white border rounded-lg shadow-sm overflow-x-auto">
       {toolbar && <div>{toolbar}</div>}
       <table className="w-full text-sm">
         <thead className="bg-gray-50">

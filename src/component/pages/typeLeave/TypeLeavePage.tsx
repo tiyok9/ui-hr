@@ -4,11 +4,12 @@ import useDebounce from "../../../hooks/useDebounce";
 import TableSkeleton from "../../table/TableSkeleton";
 import DataTable from "../../table/DataTable";
 import TableToolbar from "../../table/TableToolbar";
+
+import { typeLeavesColumns } from "../../../features/typeLeave/TypeLeaveColumns";
 import {
   useDeleteTypeLeave,
   useTypeLeaves,
-} from "../../../features/typeLeave/typeleaveApi";
-import { typeLeavesColumns } from "../../../features/typeLeave/TypeLeaveColumns";
+} from "../../../features/typeLeave/TypeLeaveApi";
 
 const TypeLeavePage = () => {
   const navigate = useNavigate();

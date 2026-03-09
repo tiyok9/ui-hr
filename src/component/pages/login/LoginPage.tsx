@@ -28,7 +28,7 @@ export default function LoginPage() {
       login({
         token: res.data.access_token,
         refreshToken: res.data.refresh_token,
-        role: "admin",
+        role: res.data.user.role,
       });
     } catch (error: any) {
       toast.error("Login gagal");
@@ -64,7 +64,7 @@ export default function LoginPage() {
             </button>
           </div>
 
-          <button className="w-full bg-blue-500 hover:bg-blue-600 transition hover:cursor-pointer text-white p-2 rounded font-semibold">
+          <button className="w-full bg-purple-600 hover:bg-purple-700 transition hover:cursor-pointer text-white p-2 rounded font-semibold">
             Login
           </button>
         </form>
