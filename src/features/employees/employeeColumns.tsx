@@ -7,7 +7,7 @@ export interface Employee {
   nama: string;
   nik: string;
   jabatan: string;
-  status: boolean;
+  aktif: boolean;
 }
 
 interface DeleteEmployeeMutation {
@@ -40,7 +40,7 @@ export const employeeColumns = (
     accessorKey: "status",
     cell: ({ row }) => {
       const employee = row.original;
-      const isActive = employee.status;
+      const isActive = employee.aktif;
 
       return (
         <ConfirmUpdate

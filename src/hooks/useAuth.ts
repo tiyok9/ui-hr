@@ -18,11 +18,15 @@ export function useAuth() {
     token: string;
     refreshToken: string;
     role: "admin" | "user";
+    user: { id: string; username: string };
   }) => {
     dispatch(loginSuccess(data));
+
     localStorage.setItem("token", data.token);
     localStorage.setItem("refreshToken", data.refreshToken);
     localStorage.setItem("role", data.role);
+    localStorage.setItem("user", JSON.stringify(data.user));
+
     navigate("/");
   };
 
@@ -32,7 +36,7 @@ export function useAuth() {
     localStorage.removeItem("token");
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("role");
-
+    localStorage.removeItem("user");
     window.location.href = "/login";
   };
 

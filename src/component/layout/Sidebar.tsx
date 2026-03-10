@@ -28,7 +28,7 @@ export default function Sidebar({
   const menus = [
     {
       name: "Dashboard",
-      path: "/",
+      path: "/admin-dashboard",
       icon: Home,
       roles: ["admin", "user"],
     },

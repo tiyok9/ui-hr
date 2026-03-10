@@ -11,7 +11,7 @@ export const useViewAttendance = (
   return useQuery({
     queryKey: ["view-attendance", page, perPage, search, month],
     queryFn: async () => {
-      const res = await api.get("/view-attendance", {
+      const res = await api.get("/absensi/user", {
         params: {
           page,
           per_page: perPage,
@@ -29,7 +29,7 @@ export const useViewAttendanceReport = (month: string) => {
   return useQuery({
     queryKey: ["view-attendance-report", month],
     queryFn: async () => {
-      const res = await api.get("/view-attendance-report", {
+      const res = await api.get("/absensi/rekap", {
         params: {
           month,
         },

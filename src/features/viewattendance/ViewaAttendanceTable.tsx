@@ -1,18 +1,17 @@
 import type { ColumnDef } from "@tanstack/react-table";
 
-type AttendanceStatus = "present" | "late" | "absent";
+type AttendanceStatus = "present" | "late";
 
 export interface Attendance {
-  date: string;
-  checkIn: string;
-  checkOut: string;
+  tanggal: string;
+  jam_masuk: string;
+  jam_keluar: string;
   status: AttendanceStatus;
 }
 
 const statusStyle: Record<AttendanceStatus, string> = {
   present: "bg-green-100 text-green-700",
-  late: "bg-yellow-100 text-yellow-700",
-  absent: "bg-red-100 text-red-700",
+  late: "bg-red-100 text-red-700",
 };
 
 export const viewAttendanceColumns = (): ColumnDef<Attendance>[] => [
@@ -20,21 +19,21 @@ export const viewAttendanceColumns = (): ColumnDef<Attendance>[] => [
     header: "Date",
     accessorKey: "date",
     cell: ({ row }) => (
-      <span className="text-gray-700">{row.original.date}</span>
+      <span className="text-gray-700">{row.original.tanggal}</span>
     ),
   },
   {
     header: "Check In",
     accessorKey: "checkIn",
     cell: ({ row }) => (
-      <span className="text-gray-600">{row.original.checkIn || "-"}</span>
+      <span className="text-gray-600">{row.original.jam_masuk || "-"}</span>
     ),
   },
   {
     header: "Check Out",
     accessorKey: "checkOut",
     cell: ({ row }) => (
-      <span className="text-gray-600">{row.original.checkOut || "-"}</span>
+      <span className="text-gray-600">{row.original.jam_keluar || "-"}</span>
     ),
   },
   {

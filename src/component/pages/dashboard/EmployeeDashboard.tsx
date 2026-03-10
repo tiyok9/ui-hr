@@ -11,7 +11,7 @@ export default function EmployeeDashboard() {
         <div className="flex justify-between items-center">
           <div>
             <h1 className="text-2xl font-bold text-gray-800">
-              Welcome back, Bara 👋
+              Welcome back 👋
             </h1>
             <p className="text-sm text-gray-500">
               Have a productive day at work
@@ -20,7 +20,7 @@ export default function EmployeeDashboard() {
 
           <button
             onClick={logout}
-            className="flex items-center gap-2 text-sm bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg hover:bg-red-600 transition-all"
+            className="flex items-center gap-2 text-sm bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg shadow-md hover:opacity-90 transition"
           >
             <LogOut size={16} />
             Logout
@@ -28,19 +28,19 @@ export default function EmployeeDashboard() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
+          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition">
             <p className="text-gray-500 text-sm">Remaining Leave</p>
             <p className="text-3xl font-semibold text-gray-800 mt-2">6 Days</p>
           </div>
 
-          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
+          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition">
             <p className="text-gray-500 text-sm">Today Attendance</p>
             <p className="text-green-600 font-semibold text-lg mt-2">
               Checked In
             </p>
           </div>
 
-          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
+          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition">
             <p className="text-gray-500 text-sm">Pending Requests</p>
             <p className="text-yellow-600 font-semibold text-lg mt-2">
               1 Request
@@ -49,7 +49,7 @@ export default function EmployeeDashboard() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex justify-between items-center">
+          <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-xl transition flex justify-between items-center">
             <div>
               <h3 className="text-lg font-semibold text-gray-800">
                 Application for Leave
@@ -61,15 +61,14 @@ export default function EmployeeDashboard() {
 
               <Link
                 to="/leave-requests"
-                className="mt-4 flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg shadow-sm hover:shadow-md hover:bg-red-600 transition-all"
+                className="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg shadow-sm hover:opacity-90 transition"
               >
                 <Calendar size={16} />
                 Apply Leave
               </Link>
             </div>
           </div>
-
-          <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex justify-between items-center">
+          <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-xl transition flex justify-between items-center">
             <div>
               <h3 className="text-lg font-semibold text-gray-800">
                 View Attendance
@@ -81,7 +80,7 @@ export default function EmployeeDashboard() {
 
               <Link
                 to="/attendance"
-                className="mt-4 flex items-center gap-2 border border-gray-200 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all"
+                className="mt-4 inline-flex items-center gap-2 border border-purple-600 text-purple-600 px-4 py-2 rounded-lg hover:bg-purple-50 transition"
               >
                 <ClipboardList size={16} />
                 View Attendance

@@ -25,7 +25,7 @@ export default function Layout() {
           setCollapsed={setCollapsed}
         />
 
-        <main className="flex-1 p-6 bg-[rgb(248,248,248)] dark:bg-gray-900">
+        <main className="flex-1 p-6 bg-[rgb(255,255,255)] dark:bg-gray-900">
           <Outlet />
         </main>
       </div>

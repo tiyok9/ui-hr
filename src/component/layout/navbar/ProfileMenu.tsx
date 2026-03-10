@@ -1,10 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { LogOut, User } from "lucide-react";
 import { useAuth } from "../../../hooks/useAuth";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../../app/store";
 
 export default function ProfileMenu() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const user = useSelector((state: RootState) => state.auth.user);
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { logout } = useAuth();
 
@@ -44,7 +47,9 @@ export default function ProfileMenu() {
           className="w-9 h-9 rounded-full object-cover"
         />
 
-        <span className=" md:block text-sm font-medium">Emma Kwan</span>
+        <span className=" md:block text-sm font-medium">
+          {user?.username || "Name User"}
+        </span>
       </div>
 
       {open && (
@@ -55,14 +60,11 @@ export default function ProfileMenu() {
         "
         >
           <div className="p-4 border-b dark:border-gray-800">
-            <p className="text-sm font-medium">Emma Kwan</p>
+            <p className="text-sm font-medium">
+              {user?.username || "Name User"}
+            </p>
             <p className="text-xs text-gray-500">Admin</p>
           </div>
-
-          <button className="flex items-center gap-2 w-full px-4 py-3 text-sm hover:bg-gray-100 dark:hover:bg-gray-800">
-            <User size={16} />
-            Profile
-          </button>
 
           <button
             onClick={logout}

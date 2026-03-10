@@ -4,7 +4,8 @@ import type { AuthState } from "./authTypes";
 const initialState: AuthState = {
   token: localStorage.getItem("token"),
   refreshToken: localStorage.getItem("refreshToken"),
-  role: "admin",
+  role: localStorage.getItem("role"),
+  user: JSON.parse(localStorage.getItem("user") || '{"id":"","username":""}'),
 };
 
 const slice = createSlice({
@@ -15,6 +16,7 @@ const slice = createSlice({
       state.token = action.payload.token;
       state.refreshToken = action.payload.refreshToken;
       state.role = action.payload.role;
+      state.user = action.payload.user;
     },
     logout() {
       localStorage.clear();

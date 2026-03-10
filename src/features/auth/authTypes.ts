@@ -1,5 +1,9 @@
 export interface AuthState {
   token: string | null;
   refreshToken: string | null;
-  role: "admin" | "karyawan";
+  role: string | null;
+  user: {
+    id: string;
+    username: string;
+  };
 }
