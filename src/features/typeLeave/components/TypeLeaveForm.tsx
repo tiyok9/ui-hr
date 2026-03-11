@@ -7,6 +7,7 @@ export type TypeLeaveFormValues = {
   jatah_hari: number;
   require_end_date: boolean;
   require_attachment: boolean;
+  using_annual_leave: boolean;
 };
 
 interface Props {
@@ -33,12 +34,14 @@ export default function TypeLeaveForm({
       jatah_hari: 0,
       require_end_date: false,
       require_attachment: false,
+      using_annual_leave: false,
       ...defaultValues,
     },
   });
 
   const requireEndDate = watch("require_end_date");
   const requireAttachment = watch("require_attachment");
+  const usingAnnualLeave = watch("using_annual_leave");
 
   useEffect(() => {
     if (defaultValues) {
@@ -136,6 +139,28 @@ export default function TypeLeaveForm({
           <span
             className={`inline-block h-4 w-4 transform rounded-full bg-white transition ${
               requireAttachment ? "translate-x-6" : "translate-x-1"
+            }`}
+          />
+        </button>
+      </div>
+      <div className="flex items-center justify-between border rounded-lg p-3">
+        <div>
+          <p className="text-sm font-medium text-gray-800">
+            Using Annual Leave
+          </p>
+          <p className="text-xs text-gray-500">Will be added to annual leave</p>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setValue("using_annual_leave", !usingAnnualLeave)}
+          className={`relative inline-flex h-6 w-11 items-center rounded-full transition ${
+            usingAnnualLeave ? "bg-blue-600" : "bg-gray-300"
+          }`}
+        >
+          <span
+            className={`inline-block h-4 w-4 transform rounded-full bg-white transition ${
+              usingAnnualLeave ? "translate-x-6" : "translate-x-1"
             }`}
           />
         </button>

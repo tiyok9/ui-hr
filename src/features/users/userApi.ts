@@ -1,7 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import api from "../../services/axios";
 import toast from "react-hot-toast";
-
 export const useUsers = (page: number, perPage: number, search: string) => {
   return useQuery({
     queryKey: ["users", page, perPage, search],
@@ -28,7 +27,7 @@ export const useUser = (id: string) => {
     enabled: !!id,
   });
 };
-export const useCreateUser = () => {
+export const useCreateUser = ({ navigate }: any) => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -41,6 +40,7 @@ export const useCreateUser = () => {
         queryKey: ["users"],
       });
       toast.success("User created successfully");
+      navigate("/users");
     },
     onError: () => {
       toast.error("Failed to create user");

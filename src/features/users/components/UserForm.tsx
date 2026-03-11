@@ -72,7 +72,7 @@ export default function UserForm({ defaultValues, onSubmit, loading }: Props) {
         >
           <option value="">Select Role</option>
           <option value="admin">Admin HR</option>
-          <option value="user">Karyawan</option>
+          <option value="karyawan">Karyawan</option>
         </select>
       </div>
 

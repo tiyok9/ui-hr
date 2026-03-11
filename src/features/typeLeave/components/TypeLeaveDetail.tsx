@@ -44,20 +44,20 @@ const TypeLeaveDetail = ({
     const file = fileList[0];
 
     if (!file.type.startsWith("image/")) {
-      setError("attachment", {
+      setError("img", {
         message: "File harus berupa gambar",
       });
       return;
     }
 
     if (file.size > 2 * 1024 * 1024) {
-      setError("attachment", {
+      setError("img", {
         message: "Ukuran file maksimal 2MB",
       });
       return;
     }
 
-    clearErrors("attachment");
+    clearErrors("img");
 
     setValue("img", file);
 

@@ -14,7 +14,7 @@ export type LeaveRequestFormValues = {
   tanggal_mulai: string;
   tanggal_selesai?: string;
   alasan: string;
-  img?: FileList;
+  img?: File;
 };
 
 interface Props {

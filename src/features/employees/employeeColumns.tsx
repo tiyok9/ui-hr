@@ -15,7 +15,7 @@ interface DeleteEmployeeMutation {
 }
 
 interface UpdateEmployeeStatusMutation {
-  mutate: (id: string) => void;
+  mutate: (variables: { id: string }) => void;
 }
 
 export const employeeColumns = (

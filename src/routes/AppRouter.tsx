@@ -39,6 +39,7 @@ import ViewAttendancePage from "../component/pages/viewattendance/ViewAttendance
 import AttendanceScanPage from "../component/pages/attendancescan/AttendanceScanPage";
 import RoleRoute from "./RoleRoute";
 import RoleRedirect from "./RoleRedirect";
+import AttendancePage from "../component/pages/attendances/AttendancePage";
 
 export default function AppRouter() {
   return (
@@ -53,7 +54,7 @@ export default function AppRouter() {
           <Route element={<RoleRoute allow={["karyawan"]} />}>
             <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
             <Route path="/leave-requests" element={<LeaveRequestPage />} />
-            <Route path="/attendance" element={<ViewAttendancePage />} />
+            <Route path="/view-attendance" element={<ViewAttendancePage />} />
           </Route>
           <Route element={<Layout />}>
             <Route path="/" element={<RoleRedirect />} />
@@ -105,6 +106,11 @@ export default function AppRouter() {
                 <Route index element={<ManageLeavePage />} />
                 <Route path="create" element={<CreateManageLeavePage />} />
                 <Route path="edit/:id" element={<EditManageLeavePage />} />
+              </Route>
+            </Route>
+            <Route element={<RoleRoute allow={["admin"]} />}>
+              <Route path="/attendance" element={<PageWrapper />}>
+                <Route index element={<AttendancePage />} />
               </Route>
             </Route>
           </Route>

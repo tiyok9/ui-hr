@@ -90,3 +90,22 @@ export const useUpdateManageLeave = () => {
     },
   });
 };
+
+export const useExportCSVLeave = () => {
+  return useMutation({
+    mutationFn: async () => {
+      const res = await api.get("/cuti/export/csv", {
+        responseType: "blob",
+      });
+
+      const url = window.URL.createObjectURL(new Blob([res.data]));
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.setAttribute("download", "cuti.csv");
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    },
+  });
+};

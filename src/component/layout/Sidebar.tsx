@@ -63,6 +63,12 @@ export default function Sidebar({
       icon: BookOpenCheck,
       roles: ["admin"],
     },
+    {
+      name: "Attendance Management",
+      path: "/attendance",
+      icon: BookOpenCheck,
+      roles: ["admin"],
+    },
   ];
 
   return (

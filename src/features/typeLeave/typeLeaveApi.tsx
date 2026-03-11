@@ -42,7 +42,7 @@ export const useCreateTypeLeave = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["type-leaves"],
+        queryKey: ["type-leave"],
       });
       toast.success("Type of leave created successfully");
     },
@@ -61,7 +61,7 @@ export const useDeleteTypeLeave = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["type-leaves"],
+        queryKey: ["type-leave"],
       });
       toast.success("Type of leave deleted successfully");
     },
@@ -81,7 +81,7 @@ export const useUpdateTypeLeave = () => {
 
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["type-leaves"],
+        queryKey: ["type-leave"],
       });
       toast.success("Type of leave updated successfully");
     },

@@ -7,7 +7,6 @@ import Skeleton from "../../form/Skeleton";
 export default function EmployeeDashboard() {
   const { logout } = useAuth();
   const { data, isLoading } = useSummaryDashboardClient();
-
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-6xl mx-auto space-y-8">
@@ -37,18 +36,23 @@ export default function EmployeeDashboard() {
               <Skeleton className="h-10 w-full" />
             ) : (
               <p className="text-3xl font-semibold text-gray-800 mt-2">
-                {data.sisa_cuti} Days
+                {data?.data.sisa_cuti} Days
               </p>
             )}
           </div>
 
           <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition">
             <p className="text-gray-500 text-sm">Today Attendance</p>
+
             {isLoading ? (
               <Skeleton className="h-10 w-full" />
-            ) : (
+            ) : data?.data.absen_hari_ini ? (
               <p className="text-green-600 font-semibold text-lg mt-2">
-                {data.absen_hari_ini}
+                {data.data.absen_hari_ini}
+              </p>
+            ) : (
+              <p className="text-red-600 font-semibold text-lg mt-2">
+                Attendance Not Checked
               </p>
             )}
           </div>
@@ -59,7 +63,7 @@ export default function EmployeeDashboard() {
               <Skeleton className="h-10 w-full" />
             ) : (
               <p className="text-yellow-600 font-semibold text-lg mt-2">
-                {data.pending_cuti} Request
+                {data.data.pending_cuti ?? 0} Request
               </p>
             )}
           </div>
@@ -96,7 +100,7 @@ export default function EmployeeDashboard() {
               </p>
 
               <Link
-                to="/attendance"
+                to="/view-attendance"
                 className="mt-4 inline-flex items-center gap-2 border border-purple-600 text-purple-600 px-4 py-2 rounded-lg hover:bg-purple-50 transition"
               >
                 <ClipboardList size={16} />

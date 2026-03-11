@@ -25,7 +25,6 @@ const UserPage = () => {
   if (isLoading) return <TableSkeleton />;
 
   const columns = userColumns(navigate, deleteUser);
-
   return (
     <div className="space-y-6">
       <h1 className="text-xl font-semibold">Manage Users</h1>

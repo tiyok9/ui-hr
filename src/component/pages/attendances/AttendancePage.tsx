@@ -1,45 +1,34 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import useDebounce from "../../../hooks/useDebounce";
-import {
-  useDeleteEmployee,
-  useEmployees,
-  useExportCSV,
-  useUpdateStatusEmployee,
-} from "../../../features/employees/employeesApi";
 import TableSkeleton from "../../table/TableSkeleton";
-import { employeeColumns } from "../../../features/employees/employeeColumns";
 import DataTable from "../../table/DataTable";
 import TableToolbar from "../../table/TableToolbar";
+import {
+  useExportCSVAttandance,
+  useManageAttandance,
+} from "../../../features/attendance/attendaceApi";
+import { ManageAttandanceColumns } from "../../../features/attendance/ManageAttandanceColumns";
 
-const EmployeesPage = () => {
-  const navigate = useNavigate();
-
+const AttendancePage = () => {
   const [pageIndex, setPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 500);
-  const exportCSV = useExportCSV();
 
-  const { data, isLoading } = useEmployees(
+  const { data, isLoading } = useManageAttandance(
     pageIndex + 1,
     pageSize,
     debouncedSearch,
   );
-  const deleteEmployee = useDeleteEmployee();
-  const updateEmployeeStatus = useUpdateStatusEmployee();
+  console.log(data);
+  const exportCSVAttandance = useExportCSVAttandance();
 
   if (isLoading) return <TableSkeleton />;
-
-  const columns = employeeColumns(
-    navigate,
-    deleteEmployee,
-    updateEmployeeStatus,
-  );
+  const columns = ManageAttandanceColumns();
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-semibold">Manage Employees</h1>
+      <h1 className="text-xl font-semibold">Manage Attandance</h1>
 
       <DataTable
         columns={columns}
@@ -54,8 +43,7 @@ const EmployeesPage = () => {
               setSearch(val);
               setPageIndex(0);
             }}
-            onAdd={() => navigate("/employees/create")}
-            onExport={() => exportCSV.mutate()}
+            onExport={() => exportCSVAttandance.mutate()}
           />
         }
         onPaginationChange={(page, size) => {
@@ -67,4 +55,4 @@ const EmployeesPage = () => {
   );
 };
 
-export default EmployeesPage;
+export default AttendancePage;

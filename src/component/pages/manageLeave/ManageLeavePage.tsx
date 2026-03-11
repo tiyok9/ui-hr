@@ -1,18 +1,16 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import useDebounce from "../../../hooks/useDebounce";
 import TableSkeleton from "../../table/TableSkeleton";
 import DataTable from "../../table/DataTable";
 import TableToolbar from "../../table/TableToolbar";
 import {
+  useExportCSVLeave,
   useManageLeaves,
   useUpdateManageLeave,
 } from "../../../features/manageLeave/typeManageLeaveApi";
 import { manageLeavesColumns } from "../../../features/manageLeave/ManageLeaveColumns";
 
 const ManageLeavePage = () => {
-  const navigate = useNavigate();
-
   const [pageIndex, setPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [search, setSearch] = useState("");
@@ -24,9 +22,10 @@ const ManageLeavePage = () => {
     debouncedSearch,
   );
   const updateManageLeave = useUpdateManageLeave();
+  const exportCSVLeave = useExportCSVLeave();
 
   if (isLoading) return <TableSkeleton />;
-  const columns = manageLeavesColumns(navigate, updateManageLeave);
+  const columns = manageLeavesColumns(updateManageLeave);
 
   return (
     <div className="space-y-6">
@@ -45,6 +44,7 @@ const ManageLeavePage = () => {
               setSearch(val);
               setPageIndex(0);
             }}
+            onExport={() => exportCSVLeave.mutate()}
           />
         }
         onPaginationChange={(page, size) => {
