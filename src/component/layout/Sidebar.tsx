@@ -66,7 +66,7 @@ export default function Sidebar({
     {
       name: "Attendance Management",
       path: "/attendance",
-      icon: BookOpenCheck,
+      icon: NotebookPen,
       roles: ["admin"],
     },
   ];

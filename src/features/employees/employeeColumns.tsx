@@ -41,7 +41,6 @@ export const employeeColumns = (
     cell: ({ row }) => {
       const employee = row.original;
       const isActive = employee.aktif;
-
       return (
         <ConfirmUpdate
           title={isActive ? "Deactivate Employee" : "Activate Employee"}
@@ -50,7 +49,7 @@ export const employeeColumns = (
               ? "Are you sure you want to deactivate this employee?"
               : "Are you sure you want to activate this employee?"
           }
-          onConfirm={() => updateEmployeeStatus.mutate(employee.id)}
+          onConfirm={() => updateEmployeeStatus.mutate({ id: employee.id })}
           trigger={
             <span
               className={`px-2 py-1 rounded text-xs font-medium cursor-pointer transition ${
