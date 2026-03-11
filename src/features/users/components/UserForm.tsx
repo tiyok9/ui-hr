@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useEmployees } from "../userApi";
 import SelectAsync from "../../../component/form/SelectAsync";
 import { useEffect } from "react";
+import ButtonSubmit from "../../../component/button/ButtonSubmit";
 
 export type UserFormValues = {
   username: string;
@@ -85,13 +86,7 @@ export default function UserForm({ defaultValues, onSubmit, loading }: Props) {
       </div>
 
       <div className="flex justify-end pt-4">
-        <button
-          type="submit"
-          disabled={loading}
-          className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700"
-        >
-          {loading ? "Saving..." : "Save"}
-        </button>
+        <ButtonSubmit loading={loading} text="save" />
       </div>
     </form>
   );

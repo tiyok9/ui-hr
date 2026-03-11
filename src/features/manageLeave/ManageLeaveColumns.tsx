@@ -1,5 +1,4 @@
 import type { ColumnDef } from "@tanstack/react-table";
-import TableActions from "../../component/table/TableActions";
 import ConfirmUpdate from "../../component/ui/ConfirmUpdate";
 
 export interface ManageLeave {
@@ -18,7 +17,6 @@ interface UpdateManageLeavesMutation {
 }
 
 export const manageLeavesColumns = (
-  navigate: (path: string) => void,
   updateManageLeave: UpdateManageLeavesMutation,
 ): ColumnDef<ManageLeave>[] => [
   {
@@ -73,7 +71,7 @@ export const manageLeavesColumns = (
               })
             }
             trigger={
-              <button className="bg-green-600 text-white px-3 py-1 rounded text-xs">
+              <button className="bg-green-600 text-white px-3 py-1 rounded text-xs hover:cursor-pointer">
                 Approve
               </button>
             }
@@ -89,7 +87,7 @@ export const manageLeavesColumns = (
               })
             }
             trigger={
-              <button className="bg-red-600 text-white px-3 py-1 rounded text-xs">
+              <button className="bg-red-600 text-white px-3 py-1 rounded text-xs hover:cursor-pointer">
                 Reject
               </button>
             }

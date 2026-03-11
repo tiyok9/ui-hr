@@ -30,13 +30,13 @@ export default function ConfirmUpdate({
           </AlertDialog.Description>
 
           <div className="flex justify-end gap-2 mt-6">
-            <AlertDialog.Cancel className="px-4 py-2 border rounded-md text-sm">
+            <AlertDialog.Cancel className="px-4 py-2 border rounded-md text-sm hover:cursor-pointer hover:bg-gray-100">
               Cancel
             </AlertDialog.Cancel>
 
             <AlertDialog.Action
               onClick={onConfirm}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700"
+              className="px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-md text-sm hover:from-purple-500 hover:cursor-pointer"
             >
               Confirm
             </AlertDialog.Action>

@@ -5,7 +5,6 @@ import TableSkeleton from "../../table/TableSkeleton";
 import DataTable from "../../table/DataTable";
 import TableToolbar from "../../table/TableToolbar";
 import {
-  useDeleteManageLeave,
   useManageLeaves,
   useUpdateManageLeave,
 } from "../../../features/manageLeave/typeManageLeaveApi";

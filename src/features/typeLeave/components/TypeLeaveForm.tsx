@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import ButtonSubmit from "../../../component/button/ButtonSubmit";
 
 export type TypeLeaveFormValues = {
   jenis_cuti: string;
@@ -140,14 +141,8 @@ export default function TypeLeaveForm({
         </button>
       </div>
 
-      <div className="flex justify-end pt-4 ">
-        <button
-          type="submit"
-          disabled={loading}
-          className="px-5 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition disabled:opacity-50"
-        >
-          {loading ? "Saving..." : "Save Leave Type"}
-        </button>
+      <div className="flex justify-end pt-4">
+        <ButtonSubmit loading={loading} text="save" />
       </div>
     </form>
   );

@@ -1,6 +1,6 @@
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, User } from "lucide-react";
+import { User } from "lucide-react";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import { useScanAttendance } from "../../../features/attendance/attendaceApi";
@@ -35,9 +35,6 @@ export default function AttendanceScanPage() {
 
         scannerRef.current?.clear();
       },
-      onError: () => {
-        toast.error("Failed to scan attendance");
-      },
     });
   };
 
@@ -71,14 +68,6 @@ export default function AttendanceScanPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-xl mx-auto space-y-6">
-        <button
-          onClick={() => window.history.back()}
-          className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900"
-        >
-          <ArrowLeft size={18} />
-          Back
-        </button>
-
         <div>
           <h1 className="text-2xl font-semibold text-gray-800">
             Employee Check-in
@@ -94,21 +83,29 @@ export default function AttendanceScanPage() {
 
             <div className="text-center text-sm text-gray-400">OR</div>
 
-            <div className="space-y-3">
+            <form
+              className="space-y-3"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit({ nik: nikInput });
+              }}
+            >
               <input
                 value={nikInput}
+                disabled={attendanceScan.isPending}
                 onChange={(e) => setNikInput(e.target.value)}
                 placeholder="Enter Employee NIK"
                 className="w-full border border-gray-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
               />
 
               <button
-                onClick={() => handleSubmit({ nik: nikInput })}
-                className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+                type="submit"
+                disabled={attendanceScan.isPending}
+                className="w-full bg-gradient-to-r text-white py-2 rounded-lg transition from-purple-600 to-indigo-600 hover:from-purple-500 hover:cursor-pointer"
               >
-                Check-in
+                {attendanceScan.isPending ? "Prosess...." : "Check-in"}
               </button>
-            </div>
+            </form>
           </div>
         )}
 
@@ -153,7 +150,7 @@ export default function AttendanceScanPage() {
 
             <button
               onClick={() => window.location.reload()}
-              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 hover:cursor-pointer"
             >
               Scan Next Employee
             </button>

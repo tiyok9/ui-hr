@@ -1,9 +1,12 @@
 import { LogOut, Calendar, ClipboardList } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
+import { useSummaryDashboardClient } from "../../../features/dashboard/dashboardApi";
+import Skeleton from "../../form/Skeleton";
 
 export default function EmployeeDashboard() {
   const { logout } = useAuth();
+  const { data, isLoading } = useSummaryDashboardClient();
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
@@ -30,21 +33,35 @@ export default function EmployeeDashboard() {
         <div className="grid gap-6 md:grid-cols-3">
           <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition">
             <p className="text-gray-500 text-sm">Remaining Leave</p>
-            <p className="text-3xl font-semibold text-gray-800 mt-2">6 Days</p>
+            {isLoading ? (
+              <Skeleton className="h-10 w-full" />
+            ) : (
+              <p className="text-3xl font-semibold text-gray-800 mt-2">
+                {data.sisa_cuti} Days
+              </p>
+            )}
           </div>
 
           <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition">
             <p className="text-gray-500 text-sm">Today Attendance</p>
-            <p className="text-green-600 font-semibold text-lg mt-2">
-              Checked In
-            </p>
+            {isLoading ? (
+              <Skeleton className="h-10 w-full" />
+            ) : (
+              <p className="text-green-600 font-semibold text-lg mt-2">
+                {data.absen_hari_ini}
+              </p>
+            )}
           </div>
 
           <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition">
             <p className="text-gray-500 text-sm">Pending Requests</p>
-            <p className="text-yellow-600 font-semibold text-lg mt-2">
-              1 Request
-            </p>
+            {isLoading ? (
+              <Skeleton className="h-10 w-full" />
+            ) : (
+              <p className="text-yellow-600 font-semibold text-lg mt-2">
+                {data.pending_cuti} Request
+              </p>
+            )}
           </div>
         </div>
 

@@ -18,14 +18,14 @@ export default function Navbar({
       <div className="flex items-center gap-4">
         <button
           onClick={() => setMobileOpen(true)}
-          className="lg:hidden text-gray-600"
+          className="lg:hidden text-gray-600 hover:cursor-pointer"
         >
           <Menu size={22} />
         </button>
 
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="hidden lg:block text-gray-600"
+          className="hidden lg:block text-gray-600 hover:cursor-pointer"
         >
           <PanelLeft size={20} />
         </button>

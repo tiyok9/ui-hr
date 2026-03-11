@@ -70,27 +70,27 @@ export default function Sidebar({
       <div
         onClick={() => setMobileOpen(false)}
         className={`
-  fixed inset-0 z-40 bg-black/40 backdrop-blur-sm
-  transition-opacity duration-300 lg:hidden
-  ${mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none"}
-  `}
+          fixed inset-0 z-40 bg-black/40 backdrop-blur-sm
+          transition-opacity duration-300 lg:hidden
+          ${mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none"}
+          `}
       />
 
       <aside
         className={`
-  fixed top-0 left-0 z-50 h-full
-  bg-white dark:bg-gray-900
+          fixed top-0 left-0 z-50 h-full
+          bg-white dark:bg-gray-900
 
-  shadow-[0_10px_40px_rgba(0,0,0,0.08)]
+          shadow-[0_10px_40px_rgba(0,0,0,0.08)]
 
-  transition-all duration-300
+          transition-all duration-300
 
-  ${collapsed ? "w-20" : "w-64"}
+          ${collapsed ? "w-20" : "w-64"}
 
-  ${mobileOpen ? "translate-x-0" : "-translate-x-full"}
+          ${mobileOpen ? "translate-x-0" : "-translate-x-full"}
 
-  lg:translate-x-0
-  `}
+          lg:translate-x-0
+          `}
       >
         <div className="h-16 flex items-center px-6 font-bold text-lg text-gray-800 dark:text-white">
           H-Care
@@ -100,8 +100,9 @@ export default function Sidebar({
           {menus
             .filter((m) => m.roles.includes(role))
             .map((menu) => {
-              const active = location.pathname === menu.path;
-
+              const active =
+                location.pathname === menu.path ||
+                location.pathname.startsWith(menu.path + "/");
               return (
                 <Link
                   key={menu.name}

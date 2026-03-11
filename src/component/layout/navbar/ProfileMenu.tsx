@@ -68,7 +68,7 @@ export default function ProfileMenu() {
 
           <button
             onClick={logout}
-            className="flex items-center gap-2 w-full px-4 py-3 text-sm text-red-500 hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="flex items-center gap-2 w-full px-4 py-3 text-sm text-red-500 hover:bg-gray-100 dark:hover:bg-gray-800 hover:cursor-pointer"
           >
             <LogOut size={16} />
             Logout

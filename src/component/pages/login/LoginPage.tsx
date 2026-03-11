@@ -15,8 +15,9 @@ export default function LoginPage() {
   const { register, handleSubmit } = useForm<LoginForm>();
   const { login } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
-
+  const [loading, isLoading] = useState(false);
   const onSubmit = async (data: LoginForm) => {
+    isLoading(true);
     try {
       const res = await api.post("/login", {
         username: data.username,
@@ -30,6 +31,7 @@ export default function LoginPage() {
         role: res.data.user.role,
         user: res.data.user,
       });
+      isLoading(false);
     } catch (error: any) {
       toast.error("Login gagal");
     }
@@ -84,14 +86,14 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:cursor-pointer"
               >
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
 
-            <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2 rounded-lg font-semibold hover:opacity-90 transition">
-              Login
+            <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:cursor-pointer hover:from-purple-500 text-white py-2 rounded-lg font-semibold hover:opacity-90 transition">
+              {loading ? "Process..." : "Login"}
             </button>
           </form>
         </div>

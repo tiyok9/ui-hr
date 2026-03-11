@@ -7,6 +7,7 @@ import {
   type UseFormSetValue,
 } from "react-hook-form";
 import TypeLeaveDetail from "../../typeLeave/components/TypeLeaveDetail";
+import ButtonSubmit from "../../../component/button/ButtonSubmit";
 
 export type LeaveRequestFormValues = {
   id_jenis_cuti: string;
@@ -106,13 +107,9 @@ export default function LeaveRequestForm({
         />
       </div>
 
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium"
-      >
-        {loading ? "Processing..." : "Submit Leave Request"}
-      </button>
+      <div className="flex justify-end pt-4">
+        <ButtonSubmit loading={loading} text="save" />
+      </div>
     </form>
   );
 }

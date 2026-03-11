@@ -29,7 +29,7 @@ export default function TableToolbar({ search, onSearchChange, onAdd }: Props) {
         {onAdd && (
           <button
             onClick={onAdd}
-            className="flex hover:cursor-pointer items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 w-full md:w-auto justify-center"
+            className="flex hover:cursor-pointer items-center gap-2 bg-gradient-to-r from-purple-600 hover:from-purple-500 to-indigo-600 text-white px-4 py-2 rounded-md text-sm w-full md:w-auto justify-center"
           >
             <Plus size={16} />
             Create Data

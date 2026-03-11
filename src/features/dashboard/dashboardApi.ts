@@ -22,3 +22,14 @@ export const useChartDashboard = () => {
     },
   });
 };
+
+export const useSummaryDashboardClient = () => {
+  return useQuery({
+    queryKey: ["summary-dashboard-client"],
+    queryFn: async () => {
+      const res = await api.get("/dash/graph-client");
+
+      return res.data;
+    },
+  });
+};

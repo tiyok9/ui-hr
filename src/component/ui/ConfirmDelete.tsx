@@ -15,7 +15,7 @@ export default function ConfirmDelete({
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger asChild>
-        <button className="text-red-600 hover:text-red-800">
+        <button className="text-red-600 hover:text-red-800 hover:cursor-pointer">
           <Trash2 size={16} />
         </button>
       </AlertDialog.Trigger>
@@ -33,13 +33,13 @@ export default function ConfirmDelete({
           </AlertDialog.Description>
 
           <div className="flex justify-end gap-2 mt-6">
-            <AlertDialog.Cancel className="px-4 py-2 border rounded-md text-sm">
+            <AlertDialog.Cancel className="px-4 py-2 border rounded-md text-sm hover:cursor-pointer">
               Cancel
             </AlertDialog.Cancel>
 
             <AlertDialog.Action
               onClick={onConfirm}
-              className="px-4 py-2 bg-red-600 text-white rounded-md text-sm hover:bg-red-700"
+              className="px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-md text-sm hover:cursor-pointer hover:from-purple-500"
             >
               Delete
             </AlertDialog.Action>

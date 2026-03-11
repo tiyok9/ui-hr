@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import SelectAsync from "../../../component/form/SelectAsync";
 import { useEffect } from "react";
 import { useDepartements } from "../positionsApi";
+import ButtonSubmit from "../../../component/button/ButtonSubmit";
 
 export type PositionsFormValues = {
   jabatan: string;
@@ -67,13 +68,7 @@ export default function PositionsForm({
       />
 
       <div className="flex justify-end pt-4">
-        <button
-          type="submit"
-          disabled={loading}
-          className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700"
-        >
-          {loading ? "Saving..." : "Save"}
-        </button>
+        <ButtonSubmit loading={loading} text="save" />
       </div>
     </form>
   );

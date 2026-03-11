@@ -22,7 +22,7 @@ export default function TablePagination({
           onChange={(e) =>
             onPaginationChange(pageIndex, Number(e.target.value))
           }
-          className="border rounded px-2 py-1"
+          className="border rounded px-2 py-1 hover:cursor-pointer"
         >
           {[5, 10, 20, 50].map((size) => (
             <option key={size} value={size}>
@@ -40,7 +40,7 @@ export default function TablePagination({
         <button
           disabled={pageIndex === 0}
           onClick={() => onPaginationChange(pageIndex - 1, pageSize)}
-          className="p-2 border rounded"
+          className="p-2 border rounded hover:cursor-pointer"
         >
           <ChevronLeft size={16} />
         </button>
@@ -48,7 +48,7 @@ export default function TablePagination({
         <button
           disabled={pageIndex + 1 >= pageCount}
           onClick={() => onPaginationChange(pageIndex + 1, pageSize)}
-          className="p-2 border rounded"
+          className="p-2 border rounded hover:cursor-pointer"
         >
           <ChevronRight size={16} />
         </button>
